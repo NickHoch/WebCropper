@@ -1,0 +1,44 @@
+﻿@using System.Configuration
+@{
+    var path = Url.Content(
+        ConfigurationManager.AppSettings["ProductImagePath"]);
+    ViewBag.Title = "Home Page";
+}
+
+@section styles {
+    <link href="~/Content/cropper/cropper.min.css" rel="stylesheet" />
+    <link href="~/Content/cropper/main.css" rel="stylesheet" />
+    <style>
+        .plusupload {
+            cursor: pointer;
+        }
+    </style>
+}
+
+<h2>Завантаження фото!</h2>
+
+<div id="fileUploadContainer">
+
+</div>
+
+<div class="row">
+    <div class="listUploadImages">
+
+    </div>
+
+    <div class="col-md-2 plusupload" id="imageContainerPlus"
+         data-counter="1">
+        <div class="thumbnail">
+            <img src="@(path+"_default.png")" class="uploadimage img-responsive" />
+        </div>
+    </div>
+
+
+</div>
+
+@Html.Partial("_ImageCropper")
+
+@section scripts {
+    <script src="~/Scripts/cropper/cropper.min.js"></script>
+    <script src="~/Scripts/cropper/work-cropper.js"></script>
+}
